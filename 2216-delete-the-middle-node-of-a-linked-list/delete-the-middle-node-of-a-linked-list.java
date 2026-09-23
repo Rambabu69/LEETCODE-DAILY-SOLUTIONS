@@ -16,27 +16,15 @@
             return null;
         }
 
-        ArrayList<Integer> arr = new ArrayList<>();
-
-        ListNode temp = head;
-
-        while (temp != null) {
-            arr.add(temp.val);
-            temp = temp.next;
-        }
-
-        int mid = arr.size() / 2;
-
-        temp = head;
-
-        
-        for (int i = 1; i < mid; i++) {
-            temp = temp.next;
-        }
-
-    
-        temp.next = temp.next.next;
-
-        return head;
+       ListNode temp= head;
+        ListNode slow = head;
+        ListNode fast = head;
+       fast = fast.next.next;
+       while(fast!=null && fast.next!=null){
+        slow = slow.next;
+        fast = fast.next.next;
+       }
+       slow.next = slow.next.next;
+       return head;
     }
 }
